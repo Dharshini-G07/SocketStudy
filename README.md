@@ -58,27 +58,27 @@ Socket programming finds applications in various domains, including web developm
 
 ## client
 ```
+
 import socket
 from datetime import datetime
 s=socket.socket()
-s.bind(('localhost',8002))
+s.bind(('localhost',8000))
 s.listen(5)
 c,addr=s.accept()
 print("Client Address : ",addr)
 now = datetime.now()
-c.send(now.strftime("Date: %d/%m/%Y and Time: %H:%M:%S").encode())
+c.send(now.strftime("%d/%m/%Y %H:%M:%S").encode())
 ack=c.recv(1024).decode()
 if ack:
-print(ack)
-c.close()
+    print(ack)
+    c.close()
 ```
 
 
 ## Server
-```
-import socket
+```import socket
 s=socket.socket()
-s.connect(('localhost',8002))
+s.connect(('localhost',8000))
 print(s.getsockname())
 print(s.recv(1024).decode())
 s.send("acknowledgement recived from the server".encode())
@@ -87,11 +87,12 @@ s.send("acknowledgement recived from the server".encode())
 ## Output 
 
 ## client
-<img width="620" height="210" alt="Screenshot 2025-09-16 162151" src="https://github.com/user-attachments/assets/0836c3fc-f0ec-4188-9c59-cb382b5c8e8e" />
+<img width="592" height="97" alt="Screenshot 2025-09-19 114538" src="https://github.com/user-attachments/assets/0feb5fe9-e5e4-4442-9fb5-819447218c56" />
+
 
 ## Server
-<img width="529" height="172" alt="Screenshot 2025-09-16 162159" src="https://github.com/user-attachments/assets/11b56c82-21e6-4207-94fd-2eb471d1b4e6" />
 
+<img width="370" height="97" alt="Screenshot 2025-09-19 114558" src="https://github.com/user-attachments/assets/626fcefb-dcb1-433e-b92b-1166c5ad5e95" />
 
 
 ## Result:
